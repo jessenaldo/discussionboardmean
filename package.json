@@ -1,0 +1,9 @@
+{
+  "name": "basic_mongoose_app",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "mongoose": "latest",
+    "socket.io": "latest"
+  }
+}

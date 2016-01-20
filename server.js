@@ -11,13 +11,14 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join( __dirname, "./client/static")));
 
 require('./server/config/mongoose.js');
 
 var routes_setter = require('./server/config/routes.js');
 
-routes_setter = (app);
+routes_setter(app)
+
+app.use(express.static(path.join( __dirname, "./client/static")));
 
 app.listen(8000, function() {
 	console.log('Listening on port 8000....');

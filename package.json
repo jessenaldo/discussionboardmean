@@ -3,6 +3,7 @@
   "dependencies": {
     "body-parser": "latest",
     "express": "latest",
+    "express-session": "^1.13.0",
     "mongoose": "latest",
     "socket.io": "latest"
   }

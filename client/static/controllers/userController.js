@@ -1,12 +1,17 @@
-discussionboard_app.controller('userController', function(userFactory, $cookies) {
+discussionboard_app.controller('userController', function(userFactory, $cookies, $location) {
 
 		this.users = [];
+
 
 		var _this = this;
 		userFactory.index(function(data) {
 			console.log(data);
 			_this.users = data;
 		})
+
+		this.go = function(path) {
+			$location.path(path);
+		}
 
 		this.addUser = function() {
 
@@ -23,6 +28,7 @@ discussionboard_app.controller('userController', function(userFactory, $cookies)
 					userAlreadyExists = true;
 					console.log($cookies.get('userId'))
 					console.log($cookies.get('userName'))
+					this.go('/dashboard');
 				}
 			}
 
@@ -43,7 +49,7 @@ discussionboard_app.controller('userController', function(userFactory, $cookies)
 					console.log(output);
 					$cookies.put('userId', output._id);
 					$cookies.put('userName', output.name);
-
+					_this.go('/dashboard');
 				})
 			}
 

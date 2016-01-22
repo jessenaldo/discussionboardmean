@@ -20,6 +20,17 @@ routes_setter(app)
 
 app.use(express.static(path.join( __dirname, "./client/static")));
 
-app.listen(8000, function() {
+var server = app.listen(8000, function() {
 	console.log('Listening on port 8000....');
+})
+
+var io = require('socket.io').listen(server)
+
+io.sockets.on('connection', function(socket) {
+	console.log('client has connected');
+	
+
+	socket.on('created_new_topic', function() {
+		io.sockets.emit("update_topics_on_views")
+	})
 })

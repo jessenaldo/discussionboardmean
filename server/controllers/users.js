@@ -14,7 +14,7 @@ module.exports = (function() {
 		},
 		create: function(req, res) {
 			user = new User({name: req.body.name})
-
+			console.log(user)
 			user.save(function(err) {
 				if(err) {
 					console.log('Error saving user');

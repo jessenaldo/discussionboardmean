@@ -1,0 +1,31 @@
+
+
+
+<h3><span ng-bind="topicCtrl.topic._user.name"></span> posted a topic:</h3>
+
+	<h4><span ng-bind="topicCtrl.topic.content"></span></h4>
+	<h4>Description: <span ng-bind="topicCtrl.topic.description"></span></h4>
+
+<form>
+<h5>Post your answer here...</h5>
+<textarea rows='5' cols='50' ng-model="topicCtrl.newAnswer.content"></textarea>
+<input type="submit" value="Answer" ng-click="topicCtrl.addAnswer()">
+</form>
+
+<hr>
+
+<div ng-repeat="answer in topicCtrl.topic.answers">
+	<span ng-bind="answer._user.name"> </span>:
+	<span ng-bind="answer.content"></span>
+	<br>
+	<!-- <span ng-bind="answer.comments"></span> -->
+	<div ng-repeat="comment in answer.comments">
+		<span ng-bind="comment._user.name"></span>:
+		<span ng-bind="comment.content"></span>
+	</div>
+	<form>
+	<textarea rows='5' cols='50' ng-model="topicCtrl.newComment.content"></textarea>
+	<input type="submit" value="Comment" ng-click="topicCtrl.addComment(answer._id)">
+	</form>
+
+</div>

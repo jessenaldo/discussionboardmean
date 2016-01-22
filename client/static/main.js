@@ -1,6 +1,6 @@
 var discussionboard_app = angular.module('discussionboard_app', ['ngRoute', 'ngCookies']);
 
-	discussionboard_app.config(function($routeProvider) {
+	discussionboard_app.config(function($routeProvider, $locationProvider) {
 
 		$routeProvider
 			.when('/', {
@@ -8,5 +8,14 @@ var discussionboard_app = angular.module('discussionboard_app', ['ngRoute', 'ngC
 				controller: 'userController',
 				controllerAs: 'userCtrl'
 			})
-			
+			.when('/dashboard', {
+				templateUrl: './partials/dashboard.html',
+				controller: 'dashboardController',
+				controllerAs: 'dashboardCtrl'
+			})
+			.when('/topic/:topicId', {
+				templateUrl: './partials/topic.html',
+				controller: 'topicController',
+				controllerAs: 'topicCtrl'
+			})
 	})

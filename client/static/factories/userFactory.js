@@ -22,6 +22,12 @@ discussionboard_app.factory('userFactory', function($http) {
 			})
 		}
 
+		factory.show = function(info, callback) {
+			$http.get('/users/'+info).success(function(output) {
+				callback(output);
+			})
+		}
+
 		return factory;
 
 

@@ -10,6 +10,9 @@ module.exports = function(app) {
 		users.index(req, res);
 	})
 
+	app.get('/users/:id', function(req, res) {
+		users.show(req, res);
+	})
 
 	
 	app.post('/users', function(req, res) {
@@ -39,6 +42,15 @@ module.exports = function(app) {
 	app.post('/answers', function(req, res) {
 		answers.create(req,res);
 	})
+
+	app.patch('/answers/upvote', function(req, res) {
+		answers.upvote(req, res);
+	})
+
+	app.patch('/answers/downvote', function(req, res) {
+		answers.downvote(req, res);
+	})
+
 
 	app.post('/comments', function(req, res) {
 		comments.create(req, res);

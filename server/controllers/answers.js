@@ -27,6 +27,7 @@ module.exports = (function() {
 							answer._topic = topic._id;
 							
 							topic.answers.push(answer);
+							user.answers.push(answer)
 
 							answer.save(function(err) {
 								if(err) {
@@ -54,7 +55,35 @@ module.exports = (function() {
 
 			})
 
+		
+		},
+		upvote: function(req, res) {
 
+			
+			console.log(req.body.upvotes)
+
+			Answer.findOneAndUpdate({ _id: req.body._id}, {upvotes: req.body.upvotes }, function(err) {
+				if(err) {
+					console.log('Error upvoting');
+				} else {
+					console.log('Successfully upvoted')
+					res.json('Successfully upvoted');
+				}
+			})
+		},
+		downvote: function(req, res) {
+
+			console.log(req.body._id);
+			console.log(req.body.downvotes);
+
+			Answer.findOneAndUpdate({_id: req.body._id}, {downvotes: req.body.downvotes}, function(err) {
+				if(err) {
+					console.log('Error downvoting');
+				} else {
+					console.log('Successfully downvoted');
+					res.json('Successfully downvoted');
+				}
+			})
 		}
 	}
 })()

@@ -3,6 +3,12 @@ discussionboard_app.controller('userController', function(userFactory, $cookies,
 		this.users = [];
 
 
+		if($cookies.get('userId')) {
+			console.log('User removed from session');
+			$cookies.remove('userId');
+		}
+		
+
 		var _this = this;
 		userFactory.index(function(data) {
 			console.log(data);

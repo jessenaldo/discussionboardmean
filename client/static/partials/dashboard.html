@@ -25,6 +25,8 @@ Category: <select
 <tr ng-repeat="topic in dashboardCtrl.topics | filter:topicFilter" >
 	<td><span ng-bind="topic._category.name"></span></td>
 	<td><a href="#/topic/{{topic._id}}"<span ng-bind="topic.content"></span></td>
-	<td><span ng-bind="topic._user.name"></span></td>
+	<!-- <td><input type="submit" value="{{topic._user.name}}" ng-click="dashboardCtrl.showUser(topic._user._id)"></td> -->
+	<td><a href="#/user/{{topic._user._id}}"<span ng-bind="topic._user.name"></a></td>
+	<!-- <td><span ng-bind="topic._user.name"></span></td> -->
 	<td><span ng-bind="topic.answers.length"></span></td>
 </tr>

@@ -1,4 +1,7 @@
 
+<a href="#/dashboard">Dashboard</a>
+<a href="#/logout">Logout</a>
+
 
 
 <h3><span ng-bind="topicCtrl.topic._user.name"></span> posted a topic:</h3>
@@ -15,17 +18,25 @@
 <hr>
 
 <div ng-repeat="answer in topicCtrl.topic.answers">
-	<span ng-bind="answer._user.name"> </span>:
-	<span ng-bind="answer.content"></span>
+	<h4><span ng-bind="answer._user.name"> </span>:</h4>
+	<h4><span ng-bind="answer.content"></span></h4>
 	<br>
-	<!-- <span ng-bind="answer.comments"></span> -->
+	<span ng-bind="answer.upvotes"></span>
+	<form>
+	<input type="submit" value="Upvote" ng-click="topicCtrl.upvote(answer)">
+	</form>
+	<span ng-bind="answer.downvotes"></span>
+	<form>
+	<input type="submit"  value="Downvote" ng-click="topicCtrl.downvote(answer)">
+	</form>
+	
 	<div ng-repeat="comment in answer.comments">
-		<span ng-bind="comment._user.name"></span>:
-		<span ng-bind="comment.content"></span>
+		<h5><span ng-bind="comment._user.name"></span>:</h5>
+		<h5><span ng-bind="comment.content"></span></h5>
 	</div>
 	<form>
-	<textarea rows='5' cols='50' ng-model="topicCtrl.newComment.content"></textarea>
-	<input type="submit" value="Comment" ng-click="topicCtrl.addComment(answer._id)">
+	<textarea rows='5' cols='50' ng-model="topicCtrl.newComment[$index].content"></textarea>
+	<input type="submit" value="Comment" ng-click="topicCtrl.addComment(answer._id, $index)">
 	</form>
 
 </div>

@@ -18,4 +18,12 @@ var discussionboard_app = angular.module('discussionboard_app', ['ngRoute', 'ngC
 				controller: 'topicController',
 				controllerAs: 'topicCtrl'
 			})
+			.when('/user/:userId', {
+				templateUrl: './partials/user.html',
+				controller: 'showuserController',
+				controllerAs: 'showuserCtrl'
+			})
+			.when('/logout', {
+				redirectTo: '/'
+			})
 	})

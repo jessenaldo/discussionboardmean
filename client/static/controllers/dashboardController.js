@@ -1,4 +1,4 @@
-discussionboard_app.controller('dashboardController', function(topicFactory, categoryFactory, $cookies) {
+discussionboard_app.controller('dashboardController', function(topicFactory, categoryFactory, $cookies, userFactory, $location) {
 
 	// working = 'working'
 	// socket.emit("this_is_working", working)
@@ -49,5 +49,10 @@ discussionboard_app.controller('dashboardController', function(topicFactory, cat
 		this.newTopic = {};
 
 	}
+
+	this.showUser = function(user) {
+		console.log(user)
+	}
+
 
 })

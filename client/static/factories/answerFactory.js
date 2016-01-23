@@ -16,8 +16,21 @@ discussionboard_app.factory('answerFactory', function($http) {
 		$http.post('/answers', info).success(function(output) {
 			console.log('Received from server create answer');
 			console.log(output);
-			callback(answers);
+			callback();
 		})
 	}
+
+	factory.upvote = function(info) {
+		$http.patch('/answers/upvote', info).success(function(output) {
+			console.log(output);
+		})
+	}
+
+	factory.downvote = function(info) {
+		$http.patch('/answers/downvote', info).success(function(output) {
+			console.log(output);
+		})
+	}
+
 	return factory;
 })

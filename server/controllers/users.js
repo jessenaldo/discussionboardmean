@@ -22,6 +22,15 @@ module.exports = (function() {
 					res.json(user);
 				}
 			})
+		},
+		show: function(req, res) {
+			User.findOne({ _id: req.params.id}, function(err, user) {
+				if(err) {
+					console.log('Error showing user');
+				} else {
+					res.json(user);
+				}
+			})
 		}
 	}
 })()
